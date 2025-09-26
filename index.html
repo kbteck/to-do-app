@@ -158,6 +158,7 @@
       border: 2px solid transparent;
       min-height: 72px;
       touch-action: pan-y;
+      gap: 16px;
     }
 
     .task-item:hover {
@@ -216,6 +217,9 @@
       color: var(--text-color);
       flex: 1;
       word-break: break-word;
+      overflow-wrap: break-word;
+      min-width: 0; /* Allows flex item to shrink below content size */
+      line-height: 1.4;
     }
 
     .delete-btn {
@@ -292,8 +296,41 @@
         gap: 12px;
       }
       
-      button {
+      .input-row button {
         width: 100%;
+      }
+      
+      .task-item {
+        padding: 16px;
+        min-height: 60px;
+        gap: 12px;
+      }
+      
+      .task-content {
+        gap: 12px;
+        min-width: 0; /* Important: allows flex items to shrink below content size */
+      }
+      
+      .task-text {
+        font-size: 15px;
+        line-height: 1.4;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+      }
+      
+      .delete-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+        margin-left: 8px;
+        flex-shrink: 0; /* Prevent delete button from shrinking */
+        white-space: nowrap;
+      }
+      
+      .task-checkbox {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
       }
     }
   </style>
