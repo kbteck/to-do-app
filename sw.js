@@ -1,10 +1,10 @@
 const CACHE_NAME = 'my-tasks-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png'
+  '/to-do-app/',
+  '/to-do-app/index.html',
+  '/to-do-app/manifest.json',
+  '/to-do-app/icon-192.png',
+  '/to-do-app/icon-512.png'
 ];
 
 // Install event - cache resources
@@ -50,7 +50,7 @@ self.addEventListener('fetch', function(event) {
           }
         ).catch(function() {
           // If both cache and network fail, show offline page
-          return caches.match('/index.html');
+          return caches.match('/to-do-app/index.html');
         });
       }
     )

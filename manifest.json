@@ -2,12 +2,12 @@
   "name": "My Tasks - Personal To-Do Manager",
   "short_name": "My Tasks",
   "description": "A beautiful, offline-capable personal task manager",
-  "start_url": "/",
+  "start_url": "/to-do-app/",
   "display": "standalone",
   "background_color": "#007bff",
   "theme_color": "#007bff",
   "orientation": "portrait-primary",
-  "scope": "/",
+  "scope": "/to-do-app/",
   "lang": "en",
   "categories": ["productivity", "utilities"],
   "icons": [
@@ -29,7 +29,7 @@
       "name": "Add New Task",
       "short_name": "New Task",
       "description": "Quickly add a new task",
-      "url": "/?action=new",
+      "url": "/to-do-app/?action=new",
       "icons": [
         {
           "src": "icon-192.png",
