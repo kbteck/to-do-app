@@ -1,0 +1,85 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": "A beautiful, offline-capable personal task manager",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder -mwl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kbteck/to-do-app.git"
+  },
+  "keywords": [
+    "todo",
+    "task-manager",
+    "productivity",
+    "electron"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kbteck/to-do-app/issues"
+  },
+  "homepage": "https://github.com/kbteck/to-do-app#readme",
+  "devDependencies": {
+    "electron": "^41.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.mytasks.app",
+    "productName": "My Tasks",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron-main.js",
+      "preload.js",
+      "index.html",
+      "manifest.json",
+      "sw.js",
+      "icon-192.png",
+      "icon-512.png"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon-512.png",
+      "verifyUpdateCodeSignature": false,
+      "signAndEditExecutable": false
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "icon-512.png",
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "icon-512.png",
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
