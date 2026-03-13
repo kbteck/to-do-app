@@ -13,13 +13,17 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      cache: false
     },
-    backgroundColor: '#007bff',
+    backgroundColor: '#2F4F4F',
     show: false,
     titleBarStyle: 'default',
     autoHideMenuBar: false
   });
+
+  // Clear cache on startup to always show latest version
+  mainWindow.webContents.session.clearCache();
 
   // Load the index.html file
   mainWindow.loadFile('index.html');
@@ -29,7 +33,7 @@ function createWindow() {
     mainWindow.show();
   });
 
-  // Open DevTools in development mode (comment out for production)
+  // Open DevTools in development mode (uncomment to debug)
   // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', () => {
@@ -48,6 +52,16 @@ function createMenu() {
           accelerator: 'CmdOrCtrl+R',
           click: () => {
             if (mainWindow) mainWindow.reload();
+          }
+        },
+        {
+          label: 'Force Reload',
+          accelerator: 'CmdOrCtrl+Shift+R',
+          click: () => {
+            if (mainWindow) {
+              mainWindow.webContents.session.clearCache();
+              mainWindow.reload();
+            }
           }
         },
         { type: 'separator' },
