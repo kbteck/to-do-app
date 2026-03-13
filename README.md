@@ -7,13 +7,34 @@ A beautiful, offline-capable task management desktop application built with **HT
 
 ## ✨ Features
 
+### Core Functionality
 - ✅ **Native Desktop App** - Runs as a standalone application on Windows, macOS, and Linux
 - 💾 **Offline Storage** - All tasks saved locally, works without internet
-- 🎨 **Beautiful UI** - Clean, modern interface with dark mode support
-- 🔄 **Progressive Web App (PWA)** - Can also run in the browser
 - ⌨️ **Keyboard Shortcuts** - Quick access with hotkeys
 - 📱 **Responsive Design** - Adapts to any window size
 - 🖼️ **Custom Icon** - Professional app icon included
+
+### Task Management (Phase 1)
+- 📅 **Due Dates & Times** - Set deadlines with optional time
+  - Smart date display: "Today", "Tomorrow", or formatted date
+  - Automatic overdue detection with visual indicators
+- 🚦 **Priority Levels** - High, Medium, Low with color-coded borders
+- 🏷️ **Categories** - 7 built-in categories (Work, Personal, Shopping, Health, Finance, Home, Other)
+- 🔍 **Smart Filtering** - Filter by All, Active, Completed, or Overdue
+- 📊 **Flexible Sorting** - Sort by Newest, Due Date, or Priority
+- 🎯 **Category Filtering** - Quick filter dropdown for categories
+
+### Productivity Features (Phase 2)
+- 📈 **Statistics Dashboard** - Real-time metrics (Total, Active, Completed, Overdue)
+- 🔎 **Instant Search** - Search across task titles, notes, and categories
+- 📝 **Task Notes** - Expandable notes section with auto-save
+- 💡 **Visual Indicators** - Badges for priority, category, dates, and notes
+
+### Design & UI
+- 🎨 **DarkSlateGrey Theme** - Professional, minimalist color scheme
+- 🌗 **Dark Mode Support** - Toggle between light and dark themes
+- 💅 **Clean Interface** - Modern, distraction-free design
+- 📐 **Responsive Layout** - Mobile and desktop optimized
 
 ## 🛠️ Technologies Used
 
@@ -106,6 +127,34 @@ to-do-app/
 | `npm run build:mac` | Build macOS installer (DMG) |
 | `npm run build:linux` | Build Linux installer (AppImage, deb) |
 | `npm run build:all` | Build for all platforms |
+
+## 📖 How to Use
+
+### Creating Tasks
+1. Enter your task in the main input field
+2. Optionally set:
+   - **Due Date & Time** - Click date/time pickers
+   - **Priority** - Select High, Medium, or Low
+   - **Category** - Choose from 7 categories
+3. Click "Add Task" or press Enter
+
+### Managing Tasks
+- **Complete/Uncomplete** - Click on the task
+- **Add Notes** - Click "📝 Notes" button to add details
+- **Delete** - Click "🗑️ Delete" button
+
+### Organizing Tasks
+- **Search** - Type in the search box to filter instantly
+- **Filter** - Use All/Active/Completed/Overdue buttons
+- **Sort** - Choose from Newest, Due Date, or Priority
+- **Category Filter** - Select specific category from dropdown
+
+### Statistics
+View real-time metrics at the top:
+- Total tasks
+- Active (incomplete) tasks
+- Completed tasks
+- Overdue tasks
 
 ## ⌨️ Keyboard Shortcuts
 
