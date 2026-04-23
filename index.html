@@ -10,6 +10,15 @@
   <title>My Tasks - To-Do List</title>
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icon-192.png">
+  <script>
+    // Initialize theme immediately to prevent flash
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (systemDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <style>
     :root {
       --primary-color: #2F4F4F;
@@ -158,22 +167,29 @@
     }
 
     .theme-toggle {
-      background: none;
+      background: var(--card-bg);
       border: 2px solid var(--border-color);
       color: var(--text-color);
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      font-size: 18px;
+      font-size: 20px;
       cursor: pointer;
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .theme-toggle:active {
-      transform: scale(0.95);
+      transform: scale(0.90);
+      background: var(--primary-color);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--primary-color);
     }
 
     .install-btn {
@@ -891,9 +907,24 @@
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
+      console.log('Theme switching from', currentTheme, 'to', newTheme);
+      
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       updateThemeIcon(newTheme);
+      
+      // Update meta theme-color for mobile browsers
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', newTheme === 'dark' ? '#1a1a1a' : '#2F4F4F');
+      }
+      
+      // Visual feedback
+      const btn = document.querySelector('.theme-toggle');
+      btn.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        btn.style.transform = 'scale(1)';
+      }, 150);
     }
 
     function updateThemeIcon(theme) {
