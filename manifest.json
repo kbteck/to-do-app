@@ -1,6 +1,6 @@
 {
-  "name": "My Tasks",
-  "short_name": "My Tasks",
+  "name": "Taskra",
+  "short_name": "Taskra",
   "description": "A beautiful, offline-capable personal task manager",
   "start_url": "./",
   "scope": "./",
