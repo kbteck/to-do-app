@@ -1,4 +1,4 @@
-# My Tasks - Personal To-Do Manager 📝
+# Taskra - Smart Task Manager 📝
 
 A beautiful, offline-capable task management desktop application built with **HTML, CSS, JavaScript**, and packaged as a native desktop app using **Electron**.
 
@@ -82,19 +82,19 @@ Build installers for different platforms:
 ```bash
 npm run build:win
 ```
-Creates: `dist/My Tasks Setup 1.0.0.exe`
+Creates: `dist/Taskra Setup 1.0.0.exe`
 
 ### Build for macOS
 ```bash
 npm run build:mac
 ```
-Creates: `dist/My Tasks.dmg` and `dist/My Tasks.zip`
+Creates: `dist/Taskra.dmg` and `dist/Taskra.zip`
 
 ### Build for Linux
 ```bash
 npm run build:linux
 ```
-Creates: `dist/My-Tasks.AppImage` and `dist/My-Tasks.deb`
+Creates: `dist/Taskra.AppImage` and `dist/Taskra.deb`
 
 ### Build for All Platforms
 ```bash

@@ -100,13 +100,13 @@ function createMenu() {
       label: 'Help',
       submenu: [
         {
-          label: 'About My Tasks',
+          label: 'About Taskra',
           click: () => {
             const { dialog } = require('electron');
             dialog.showMessageBox(mainWindow, {
               type: 'info',
-              title: 'About My Tasks',
-              message: 'My Tasks - Personal To-Do Manager',
+              title: 'About Taskra',
+              message: 'Taskra - Smart Task Manager',
               detail: 'Version 1.0.0\nA beautiful, offline-capable task manager',
               buttons: ['OK']
             });
