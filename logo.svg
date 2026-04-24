@@ -5,7 +5,7 @@
   <!-- Taskra Text -->
   <text 
     x="256" 
-    y="280" 
+    y="300" 
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
     font-size="180" 
     font-weight="bold" 
@@ -14,6 +14,6 @@
     Taskra
   </text>
   
-  <!-- Red Dot over 'a' -->
-  <circle cx="415" cy="192" r="22" fill="#FF0000"/>
+  <!-- Red Dot ABOVE 'a' -->
+  <circle cx="415" cy="180" r="27" fill="#FF0000"/>
 </svg>

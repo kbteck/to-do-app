@@ -130,17 +130,17 @@
       const textY = size / 2;
       ctx.fillText(text, textX, textY);
       
-      // Calculate position for red dot over the "a"
+      // Calculate position for red dot ABOVE the "a"
       // Measure text to find the "a" position
       const fullTextWidth = ctx.measureText(text).width;
       const textBeforeA = 'Taskr';
       const beforeAWidth = ctx.measureText(textBeforeA).width;
       const aWidth = ctx.measureText('a').width;
       
-      // Position dot over the "a"
+      // Position dot DIRECTLY ABOVE the "a" (centered on the letter)
       const dotX = textX - (fullTextWidth / 2) + beforeAWidth + (aWidth / 2);
-      const dotY = textY - (fontSize * 0.45); // Above the text
-      const dotRadius = fontSize * 0.12;
+      const dotY = textY - (fontSize * 0.65); // Well above the text
+      const dotRadius = fontSize * 0.15; // Larger, more visible dot
       
       // Draw red dot
       ctx.fillStyle = '#FF0000';
