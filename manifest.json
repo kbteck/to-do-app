@@ -1,6 +1,6 @@
 {
-  "name": "TaskMaster Pro",
-  "short_name": "TaskMaster",
+  "name": "Taskra",
+  "short_name": "Taskra",
   "description": "Smart task manager with intelligent notifications and freemium features",
   "start_url": "./",
   "scope": "./",

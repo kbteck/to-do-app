@@ -1,7 +1,7 @@
 // App Configuration and Feature Flags
 const APP_CONFIG = {
   version: '2.0.0',
-  name: 'TaskMaster Pro',
+  name: 'Taskra',
   
   // Monetization
   pricing: {
@@ -39,7 +39,7 @@ const APP_CONFIG = {
     enabled: true,
     screens: [
       {
-        title: 'Welcome to TaskMaster Pro',
+        title: 'Welcome to Taskra',
         description: 'Your intelligent task manager with smart notifications',
         icon: '✨',
         image: 'icon-512.png'
