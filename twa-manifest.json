@@ -1,0 +1,45 @@
+{
+  "packageId": "com.taskra.app",
+  "host": "kbteck.github.io",
+  "name": "Taskra",
+  "launcherName": "Taskra",
+  "display": "standalone",
+  "orientation": "portrait",
+  "themeColor": "#2F4F4F",
+  "backgroundColor": "#F0FFF0",
+  "startUrl": "/to-do-app/",
+  "iconUrl": "https://kbteck.github.io/to-do-app/icon-512.png",
+  "maskableIconUrl": "https://kbteck.github.io/to-do-app/icon-512.png",
+  "monochromeIconUrl": "https://kbteck.github.io/to-do-app/icon-512.png",
+  "splashScreen": {
+    "backgroundColor": "#F0FFF0",
+    "imageUrl": "https://kbteck.github.io/to-do-app/icon-512.png"
+  },
+  "shortcuts": [],
+  "navigationColor": "#2F4F4F",
+  "navigationColorDark": "#1a2f2f",
+  "navigationDividerColor": "#2F4F4F",
+  "navigationDividerColorDark": "#1a2f2f",
+  "enableNotifications": true,
+  "features": {
+    "locationDelegation": {
+      "enabled": false
+    },
+    "playBilling": {
+      "enabled": true
+    }
+  },
+  "isChromeOSOnly": false,
+  "minSdkVersion": 21,
+  "targetSdkVersion": 34,
+  "alphaVersion": {
+    "enabled": false
+  },
+  "appVersion": "1",
+  "appVersionName": "1.0.0",
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "android"
+  },
+  "generatorApp": "bubblewrap-cli"
+}
