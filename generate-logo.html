@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taskra Logo Generator</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 40px;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .canvas-container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    canvas {
+      border: 1px solid #ddd;
+      display: block;
+    }
+    
+    .controls {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+    
+    button {
+      background: #2F4F4F;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    
+    button:hover {
+      background: #1a2f2f;
+    }
+    
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .preview-item {
+      text-align: center;
+    }
+    
+    h1 {
+      color: #2F4F4F;
+      margin: 0;
+    }
+    
+    p {
+      color: #666;
+      margin: 10px 0;
+    }
+    
+    .instructions {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Taskra Logo Generator</h1>
+  <p>Generate app icons with the Taskra logo (with red dot on "a")</p>
+  
+  <div class="instructions">
+    <strong>📱 Instructions:</strong>
+    <ol>
+      <li>Click "Generate Logos" below</li>
+      <li>Right-click each icon → "Save image as..."</li>
+      <li>Save as: <code>icon-192.png</code> and <code>icon-512.png</code></li>
+      <li>Replace old icons in your project folder</li>
+      <li>Push to GitHub to update your phone app</li>
+    </ol>
+  </div>
+
+  <div class="controls">
+    <button onclick="generateAllIcons()" style="font-size: 18px; padding: 15px 30px;">
+      🎨 Generate Logos
+    </button>
+    
+    <div class="preview-grid" id="iconGrid"></div>
+  </div>
+
+  <script>
+    function drawTaskraLogo(canvas, size) {
+      const ctx = canvas.getContext('2d');
+      canvas.width = size;
+      canvas.height = size;
+      
+      // Background (light honeydew for subtle contrast)
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, size, size);
+      
+      // Calculate text size based on canvas size
+      const fontSize = size * 0.35;
+      const padding = size * 0.15;
+      
+      // Text styling
+      ctx.font = `bold ${fontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      
+      // Draw "Taskra" text in dark navy
+      ctx.fillStyle = '#1C2833';
+      const text = 'Taskra';
+      const textX = size / 2;
+      const textY = size / 2;
+      ctx.fillText(text, textX, textY);
+      
+      // Calculate position for red dot over the "a"
+      // Measure text to find the "a" position
+      const fullTextWidth = ctx.measureText(text).width;
+      const textBeforeA = 'Taskr';
+      const beforeAWidth = ctx.measureText(textBeforeA).width;
+      const aWidth = ctx.measureText('a').width;
+      
+      // Position dot over the "a"
+      const dotX = textX - (fullTextWidth / 2) + beforeAWidth + (aWidth / 2);
+      const dotY = textY - (fontSize * 0.45); // Above the text
+      const dotRadius = fontSize * 0.12;
+      
+      // Draw red dot
+      ctx.fillStyle = '#FF0000';
+      ctx.beginPath();
+      ctx.arc(dotX, dotY, dotRadius, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Add subtle border for 192px version (helps visibility on some backgrounds)
+      if (size === 192) {
+        ctx.strokeStyle = '#E0E0E0';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(0, 0, size, size);
+      }
+    }
+    
+    function generateAllIcons() {
+      const grid = document.getElementById('iconGrid');
+      grid.innerHTML = '';
+      
+      const sizes = [
+        { size: 192, name: 'icon-192.png' },
+        { size: 512, name: 'icon-512.png' }
+      ];
+      
+      sizes.forEach(({ size, name }) => {
+        const container = document.createElement('div');
+        container.className = 'preview-item';
+        
+        const canvas = document.createElement('canvas');
+        drawTaskraLogo(canvas, size);
+        
+        const title = document.createElement('h3');
+        title.textContent = name;
+        title.style.color = '#2F4F4F';
+        title.style.margin = '10px 0 5px 0';
+        
+        const info = document.createElement('p');
+        info.textContent = `${size}×${size}px`;
+        info.style.fontSize = '14px';
+        info.style.color = '#666';
+        
+        const downloadBtn = document.createElement('button');
+        downloadBtn.textContent = '💾 Save Image';
+        downloadBtn.onclick = () => {
+          const link = document.createElement('a');
+          link.download = name;
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        };
+        
+        const img = document.createElement('img');
+        img.src = canvas.toDataURL();
+        img.style.width = '150px';
+        img.style.height = '150px';
+        img.style.border = '1px solid #ddd';
+        img.style.borderRadius = '8px';
+        
+        container.appendChild(title);
+        container.appendChild(img);
+        container.appendChild(info);
+        container.appendChild(downloadBtn);
+        
+        grid.appendChild(container);
+      });
+    }
+    
+    // Auto-generate on load
+    window.onload = () => generateAllIcons();
+  </script>
+</body>
+</html>
