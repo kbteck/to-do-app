@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="My Tasks">
   <title>Taskra - Smart Task Manager</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-circular-192.png">
   <script src="config.js"></script>
   <script>
     // Check onboarding status
@@ -992,7 +992,7 @@
   <div class="todo-container">
     <div class="header">
       <h2 style="display: flex; align-items: center; gap: 8px;">
-        <img src="icon-badge-40.png" alt="Taskra" style="height: 40px; width: auto; display: block; cursor: pointer;" onclick="location.reload()" title="Taskra">
+        <img src="icon-circular-40.png" alt="Taskra" style="height: 40px; width: auto; display: block; cursor: pointer;" onclick="location.reload()" title="Taskra">
         <span class="premium-badge" id="premiumBadge" style="display:none;">
           👑 Premium
         </span>
@@ -2003,8 +2003,8 @@
         try {
           const notification = new Notification(title, {
             body: body,
-            icon: 'icon-192.png',
-            badge: 'icon-192.png',
+            icon: 'icon-circular-192.png',
+            badge: 'icon-circular-192.png',
             tag: 'task-' + task.id + '-' + notificationType,
             requireInteraction: true,
             silent: false,
