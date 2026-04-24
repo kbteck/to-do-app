@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to TaskMaster Pro</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      overflow: hidden;
+    }
+    
+    .onboarding-container {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      position: relative;
+    }
+    
+    .screen {
+      display: none;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .screen.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .icon {
+      font-size: 80px;
+      margin-bottom: 30px;
+      animation: bounce 2s ease infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    h1 {
+      font-size: 32px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    
+    p {
+      font-size: 18px;
+      opacity: 0.95;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .features {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 30px 0;
+      text-align: left;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    
+    .feature-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .feature-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+    }
+    
+    button {
+      flex: 1;
+      padding: 16px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+    
+    .btn-primary {
+      background: white;
+      color: #667eea;
+    }
+    
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn-secondary:active {
+      transform: scale(0.98);
+    }
+    
+    .progress-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .dot.active {
+      background: white;
+      width: 24px;
+      border-radius: 4px;
+    }
+    
+    .premium-card {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      border-radius: 20px;
+      padding: 32px;
+      margin: 30px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .premium-title {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .premium-price {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 20px 0;
+    }
+    
+    .premium-features {
+      text-align: left;
+      margin: 24px 0;
+    }
+    
+    .premium-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+    
+    .skip-link {
+      display: block;
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .logo-text {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: linear-gradient(45deg, #fff, #f0f0f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body>
+  <div class="onboarding-container">
+    <!-- Screen 1: Welcome -->
+    <div class="screen active" data-screen="0">
+      <div class="logo-text">TaskMaster Pro</div>
+      <div class="icon">✨</div>
+      <h1>Welcome!</h1>
+      <p>Your intelligent task manager with smart notifications and seamless organization</p>
+      <div class="buttons">
+        <button class="btn-primary" onclick="nextScreen()">Get Started</button>
+      </div>
+    </div>
+    
+    <!-- Screen 2: Notifications -->
+    <div class="screen" data-screen="1">
+      <div class="icon">⏰</div>
+      <h1>Never Miss a Deadline</h1>
+      <p>Get smart reminders before and when tasks are due</p>
+      <div class="features">
+        <div class="feature-item">
+          <span class="feature-icon">🔔</span>
+          <span>15-minute advance reminders</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📲</span>
+          <span>Push notifications on your device</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🔊</span>
+          <span>Sound alerts & vibration</span>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn-secondary" onclick="prevScreen()">Back</button>
+        <button class="btn-primary" onclick="nextScreen()">Continue</button>
+      </div>
+    </div>
+    
+    <!-- Screen 3: Organization -->
+    <div class="screen" data-screen="2">
+      <div class="icon">📊</div>
+      <h1>Organize Effortlessly</h1>
+      <p>Powerful features to keep your tasks under control</p>
+      <div class="features">
+        <div class="feature-item">
+          <span class="feature-icon">🎯</span>
+          <span>Priority levels (High, Medium, Low)</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🏷️</span>
+          <span>Categories (Work, Personal, etc.)</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🔍</span>
+          <span>Instant search & smart filters</span>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn-secondary" onclick="prevScreen()">Back</button>
+        <button class="btn-primary" onclick="nextScreen()">Continue</button>
+      </div>
+    </div>
+    
+    <!-- Screen 4: Offline -->
+    <div class="screen" data-screen="3">
+      <div class="icon">🔄</div>
+      <h1>Works Everywhere</h1>
+      <p>Offline-capable and always in sync</p>
+      <div class="features">
+        <div class="feature-item">
+          <span class="feature-icon">📴</span>
+          <span>Full offline functionality</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">💾</span>
+          <span>Auto-save everything instantly</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🌙</span>
+          <span>Beautiful dark & light themes</span>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn-secondary" onclick="prevScreen()">Back</button>
+        <button class="btn-primary" onclick="nextScreen()">Continue</button>
+      </div>
+    </div>
+    
+    <!-- Screen 5: Premium Offer -->
+    <div class="screen" data-screen="4">
+      <div class="premium-card">
+        <div class="premium-title">
+          <span>👑</span>
+          <span>Go Premium</span>
+        </div>
+        <div class="premium-price">$4.99</div>
+        <div style="font-size: 14px; opacity: 0.9; margin-bottom: 20px;">One-Time Purchase</div>
+        
+        <div class="premium-features">
+          <div class="premium-feature">
+            <span>✅</span>
+            <span><strong>Unlimited</strong> tasks with notifications</span>
+          </div>
+          <div class="premium-feature">
+            <span>✅</span>
+            <span><strong>Custom reminder times</strong> (5min, 30min, 1hr, 1day)</span>
+          </div>
+          <div class="premium-feature">
+            <span>✅</span>
+            <span><strong>Recurring tasks</strong> (daily, weekly, monthly)</span>
+          </div>
+          <div class="premium-feature">
+            <span>✅</span>
+            <span><strong>Cloud sync</strong> across devices</span>
+          </div>
+          <div class="premium-feature">
+            <span>✅</span>
+            <span><strong>Export data</strong> (CSV, PDF)</span>
+          </div>
+          <div class="premium-feature">
+            <span>✅</span>
+            <span><strong>Custom themes</strong> & colors</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="buttons">
+        <button class="btn-primary" onclick="purchasePremium()">Unlock Premium - $4.99</button>
+      </div>
+      <a href="#" class="skip-link" onclick="startFree(); return false;">Start with Free Version (5 tasks limit)</a>
+    </div>
+    
+    <!-- Progress Dots -->
+    <div class="progress-dots">
+      <div class="dot active" data-dot="0"></div>
+      <div class="dot" data-dot="1"></div>
+      <div class="dot" data-dot="2"></div>
+      <div class="dot" data-dot="3"></div>
+      <div class="dot" data-dot="4"></div>
+    </div>
+  </div>
+  
+  <script src="config.js"></script>
+  <script>
+    let currentScreen = 0;
+    const totalScreens = 5;
+    
+    function nextScreen() {
+      if (currentScreen < totalScreens - 1) {
+        currentScreen++;
+        updateScreen();
+      }
+    }
+    
+    function prevScreen() {
+      if (currentScreen > 0) {
+        currentScreen--;
+        updateScreen();
+      }
+    }
+    
+    function updateScreen() {
+      // Hide all screens
+      document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+      });
+      
+      // Show current screen
+      const activeScreen = document.querySelector(`[data-screen="${currentScreen}"]`);
+      activeScreen.classList.add('active');
+      
+      // Update dots
+      document.querySelectorAll('.dot').forEach((dot, index) => {
+        if (index === currentScreen) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+    
+    async function purchasePremium() {
+      try {
+        // Show loading state
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = 'Processing...';
+        btn.disabled = true;
+        
+        // Attempt purchase
+        const result = await playBilling.purchasePremium();
+        
+        if (result.success) {
+          // Unlock premium
+          premiumManager.unlockPremium(result.purchaseToken);
+          
+          // Show success message
+          alert('🎉 Premium Unlocked! Enjoy unlimited features.');
+          
+          // Complete onboarding
+          completeOnboarding();
+        } else {
+          throw new Error('Purchase failed');
+        }
+      } catch (error) {
+        console.error('Purchase error:', error);
+        alert('Purchase failed. Please try again or start with the free version.');
+        event.target.textContent = originalText;
+        event.target.disabled = false;
+      }
+    }
+    
+    function startFree() {
+      completeOnboarding();
+    }
+    
+    function completeOnboarding() {
+      // Mark onboarding as completed
+      localStorage.setItem('onboardingCompleted', 'true');
+      
+      // Request notification permission
+      if ('Notification' in window && Notification.permission === 'default') {
+        Notification.requestPermission().then(permission => {
+          console.log('Notification permission:', permission);
+          redirectToApp();
+        });
+      } else {
+        redirectToApp();
+      }
+    }
+    
+    function redirectToApp() {
+      // Redirect to main app
+      window.location.href = 'index.html';
+    }
+    
+    // Swipe gesture support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    document.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      
+      if (touchEndX < touchStartX - swipeThreshold) {
+        // Swipe left - next screen
+        nextScreen();
+      }
+      
+      if (touchEndX > touchStartX + swipeThreshold && currentScreen > 0) {
+        // Swipe right - previous screen
+        prevScreen();
+      }
+    }
+  </script>
+</body>
+</html>

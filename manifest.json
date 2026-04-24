@@ -1,7 +1,7 @@
 {
-  "name": "My Tasks",
-  "short_name": "My Tasks",
-  "description": "A beautiful, offline-capable personal task manager",
+  "name": "TaskMaster Pro",
+  "short_name": "TaskMaster",
+  "description": "Smart task manager with intelligent notifications and freemium features",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
