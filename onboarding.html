@@ -13,13 +13,26 @@
     
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #0a0a0a;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: #ffffff;
       overflow: hidden;
+      position: relative;
+    }
+    
+    /* Subtle background accent */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(47, 79, 79, 0.1) 0%, transparent 70%);
+      pointer-events: none;
     }
     
     .onboarding-container {
@@ -65,17 +78,19 @@
       font-size: 32px;
       margin-bottom: 16px;
       font-weight: 700;
+      color: #ffffff;
     }
     
     p {
       font-size: 18px;
-      opacity: 0.95;
+      color: rgba(255, 255, 255, 0.8);
       margin-bottom: 30px;
       line-height: 1.6;
     }
     
     .features {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(47, 79, 79, 0.15);
+      border: 1px solid rgba(47, 79, 79, 0.3);
       backdrop-filter: blur(10px);
       border-radius: 16px;
       padding: 24px;
@@ -119,8 +134,13 @@
     }
     
     .btn-primary {
-      background: white;
-      color: #667eea;
+      background: #2F4F4F;
+      color: white;
+      box-shadow: 0 4px 12px rgba(47, 79, 79, 0.3);
+    }
+    
+    .btn-primary:hover {
+      background: #1a2f2f;
     }
     
     .btn-primary:active {
@@ -128,9 +148,14 @@
     }
     
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: white;
       backdrop-filter: blur(10px);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
     }
     
     .btn-secondary:active {
@@ -153,17 +178,18 @@
     }
     
     .dot.active {
-      background: white;
+      background: #2F4F4F;
       width: 24px;
       border-radius: 4px;
     }
     
     .premium-card {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      background: linear-gradient(135deg, #2F4F4F 0%, #1a2f2f 100%);
+      border: 2px solid rgba(47, 79, 79, 0.5);
       border-radius: 20px;
       padding: 32px;
       margin: 30px 0;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 30px rgba(47, 79, 79, 0.4);
     }
     
     .premium-title {
@@ -173,17 +199,23 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      color: #ffd700;
     }
     
     .premium-price {
       font-size: 48px;
       font-weight: 700;
       margin: 20px 0;
+      color: #ffffff;
     }
     
     .premium-features {
       text-align: left;
       margin: 24px 0;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .premium-feature {
@@ -197,16 +229,21 @@
     .skip-link {
       display: block;
       margin-top: 20px;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.6);
       text-decoration: none;
       font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    
+    .skip-link:hover {
+      color: #2F4F4F;
     }
     
     .logo-text {
       font-size: 36px;
       font-weight: 800;
       margin-bottom: 8px;
-      background: linear-gradient(45deg, #fff, #f0f0f0);
+      background: linear-gradient(135deg, #2F4F4F 0%, #5a8a8a 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -309,7 +346,7 @@
           <span>Go Premium</span>
         </div>
         <div class="premium-price">$4.99</div>
-        <div style="font-size: 14px; opacity: 0.9; margin-bottom: 20px;">One-Time Purchase</div>
+        <div style="font-size: 14px; opacity: 0.9; margin-bottom: 20px; color: rgba(255,255,255,0.7);">One-Time Purchase</div>
         
         <div class="premium-features">
           <div class="premium-feature">
